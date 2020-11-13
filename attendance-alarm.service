@@ -1,0 +1,13 @@
+[Unit]
+Description=attendance-alarm
+After=network-online.target
+
+[Service]
+User=attendance-alarm
+Group=attendance-alarm
+WorkingDirectory=/path/to/attendance-alarm
+Restart=always
+ExecStart=/usr/bin/screen -Dm -S attendance-alarm python3 /path/to/attendance-alarm/bot.py
+
+[Install]
+WantedBy=multi-user.target
