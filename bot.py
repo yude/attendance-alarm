@@ -17,9 +17,6 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    async def on_message(message):
-    if message.author.bot:
-        return
     voice = await client.join_voice_channel(client.get_channel(ALARM_VOICE))
     weekday = datetime.now().weekday()
     if message.content == '!debug':
