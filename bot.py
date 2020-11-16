@@ -3,10 +3,11 @@
 # import
 import discord
 from discord.ext import tasks
-from datetime import datetime 
+from datetime import datetime
+import os
 client = discord.Client()
 CHANNEL = 776686999851630613
-TOKEN = "TOKEN_GOES_HERE"
+TOKEN = os.getenv('TOKEN')
 
 # 起動通知
 @client.event

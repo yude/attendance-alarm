@@ -2,9 +2,9 @@
 Discord ボット: 出席ボタンを押す通知を送信
 
 ## Requirements
-* [discord.py](https://discordpy.readthedocs.io/ja/latest/)
+* [discord.py](https://discordpy.readthedocs.io/ja/latest/) **including VOICE**
 ```
-pip install discord
+pip install discord[voice]
 ```
 
 ## Repository structure
