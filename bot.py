@@ -23,7 +23,7 @@ async def on_message(message):
     voice = await client.join_voice_channel(client.get_channel(ALARM_VOICE))
     weekday = datetime.now().weekday()
     if message.content == '!debug':
-        player = voice.create_ffmpeg_player('bgm.mp3')
+        player = voice.create_ffmpeg_player('audio.wav')
         player.start()
         # 月曜日
         if weekday == 0:
