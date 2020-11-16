@@ -8,7 +8,7 @@ import os
 client = discord.Client()
 CHANNEL = 776686999851630613
 TOKEN = os.getenv('TOKEN')
-
+DEV_CHANNEL = 777780662013919283
 # 起動通知
 @client.event
 async def on_ready():
@@ -21,23 +21,23 @@ async def on_message(message):
         # 月曜日
         if weekday == 0:
             print("<@&776685010110513152> 月曜日 限 の開始時刻です。出席確認をしてください。")
-            await client.get_channel(CHANNEL).send('<@&776685010110513152> 月曜日 限 の開始時刻です。出席確認をしてください。')
+            await client.get_channel(DEV_CHANNEL).send('<@&776685010110513152> 月曜日 限 の開始時刻です。出席確認をしてください。')
         # 火曜日
         if weekday == 1:
             print("<@&776685230748729344> 火曜日 限 の開始時刻です。出席確認をしてください。")
-            await client.get_channel(CHANNEL).send('<@&776685230748729344> 火曜日 限 の開始時刻です。出席確認をしてください。')
+            await client.get_channel(DEV_CHANNEL).send('<@&776685230748729344> 火曜日 限 の開始時刻です。出席確認をしてください。')
         # 水曜日
         if weekday == 2:
             print("<@&776685706415177748> 水曜日 限 の開始時刻です。出席確認をしてください。")
-            await client.get_channel(CHANNEL).send('<@&776685706415177748> 水曜日 限 の開始時刻です。出席確認をしてください。')
+            await client.get_channel(DEV_CHANNEL).send('<@&776685706415177748> 水曜日 限 の開始時刻です。出席確認をしてください。')
         # 木曜日
         if weekday == 3:
             print("<@&776685777597890570> 木曜日 限 の開始時刻です。出席確認をしてください。")
-            await client.get_channel(CHANNEL).send('<@&776685777597890570> 木曜日 限 の開始時刻です。出席確認をしてください。')
+            await client.get_channel(DEV_CHANNEL).send('<@&776685777597890570> 木曜日 限 の開始時刻です。出席確認をしてください。')
         # 金曜日
         if weekday == 4:
             print("<@&776685877371863090> 金曜日 限 の開始時刻です。出席確認をしてください。")
-            await client.get_channel(CHANNEL).send('<@&776685877371863090> 金曜日 限 の開始時刻です。出席確認をしてください。')
+            await client.get_channel(DEV_CHANNEL).send('<@&776685877371863090> 金曜日 限 の開始時刻です。出席確認をしてください。')
 
 @tasks.loop(seconds=60)
 async def loop():
