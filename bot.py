@@ -9,6 +9,7 @@ client = discord.Client()
 CHANNEL = 776686999851630613
 TOKEN = os.getenv('TOKEN')
 DEV_CHANNEL = 777780662013919283
+ALARM_VOICE = 777780340864712734
 # 起動通知
 @client.event
 async def on_ready():
@@ -16,8 +17,14 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
+    async def on_message(message):
+    if message.author.bot:
+        return
+    voice = await client.join_voice_channel(client.get_channel(ALARM_VOICE))
     weekday = datetime.now().weekday()
     if message.content == '!debug':
+        player = voice.create_ffmpeg_player('bgm.mp3')
+        player.start()
         # 月曜日
         if weekday == 0:
             print("<@&776685010110513152> 月曜日 限 の開始時刻です。出席確認をしてください。")
