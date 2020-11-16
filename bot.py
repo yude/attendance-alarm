@@ -25,29 +25,36 @@ async def on_message(message):
         if weekday == 0:
             print("<@&776685010110513152> 月曜日 限 の開始時刻です。出席確認をしてください。")
             await client.get_channel(DEV_CHANNEL).send('<@&776685010110513152> 月曜日 限 の開始時刻です。出席確認をしてください。')
+            voice.play(discord.FFmpegPCMAudio('audio.wav'), after=lambda e: print('done', e))
         # 火曜日
         if weekday == 1:
             print("<@&776685230748729344> 火曜日 限 の開始時刻です。出席確認をしてください。")
             await client.get_channel(DEV_CHANNEL).send('<@&776685230748729344> 火曜日 限 の開始時刻です。出席確認をしてください。')
+            voice.play(discord.FFmpegPCMAudio('audio.wav'), after=lambda e: print('done', e))
         # 水曜日
         if weekday == 2:
             print("<@&776685706415177748> 水曜日 限 の開始時刻です。出席確認をしてください。")
             await client.get_channel(DEV_CHANNEL).send('<@&776685706415177748> 水曜日 限 の開始時刻です。出席確認をしてください。')
+            voice.play(discord.FFmpegPCMAudio('audio.wav'), after=lambda e: print('done', e))
         # 木曜日
         if weekday == 3:
             print("<@&776685777597890570> 木曜日 限 の開始時刻です。出席確認をしてください。")
             await client.get_channel(DEV_CHANNEL).send('<@&776685777597890570> 木曜日 限 の開始時刻です。出席確認をしてください。')
+            voice.play(discord.FFmpegPCMAudio('audio.wav'), after=lambda e: print('done', e))
         # 金曜日
         if weekday == 4:
             print("<@&776685877371863090> 金曜日 限 の開始時刻です。出席確認をしてください。")
             await client.get_channel(DEV_CHANNEL).send('<@&776685877371863090> 金曜日 限 の開始時刻です。出席確認をしてください。')
+            voice.play(discord.FFmpegPCMAudio('audio.wav'), after=lambda e: print('done', e))
     if message.content == '!stop':
         voice.stop()
 @tasks.loop(seconds=60)
 async def loop():
+    voice = await client.get_channel(ALARM_VOICE).connect()
     weekday = datetime.now().weekday()
     now = datetime.now().strftime('%H:%M')
     if now == '09:00':
+        voice.play(discord.FFmpegPCMAudio('audio.wav'), after=lambda e: print('done', e))
         # 月曜日
         if weekday == 0:
             await client.get_channel(CHANNEL).send('<@&776685010110513152> 月曜日 1限 の開始時刻です。出席確認をしてください。')
@@ -64,6 +71,7 @@ async def loop():
         if weekday == 4:
             await client.get_channel(CHANNEL).send('<@&776685877371863090> 金曜日 1限 の開始時刻です。出席確認をしてください。')
     if now == '10:40':
+        voice.play(discord.FFmpegPCMAudio('audio.wav'), after=lambda e: print('done', e))
         # 月曜日
         if weekday == 0:
             await client.get_channel(CHANNEL).send('<@&776685103203483657> 月曜日 2限 の開始時刻です。出席確認をしてください。')
@@ -80,6 +88,7 @@ async def loop():
         if weekday == 4:
             await client.get_channel(CHANNEL).send('<@&776685909868412938> 金曜日 2限 の開始時刻です。出席確認をしてください。')
     if now == '13:00':
+        voice.play(discord.FFmpegPCMAudio('audio.wav'), after=lambda e: print('done', e))
         # 月曜日
         if weekday == 0:
             await client.get_channel(CHANNEL).send('<@&776685163769626645> 月曜日 3限 の開始時刻です。出席確認をしてください。')
@@ -96,6 +105,7 @@ async def loop():
         if weekday == 4:
             await client.get_channel(CHANNEL).send('<@&776685918543151175> 金曜日 3限 の開始時刻です。出席確認をしてください。')
     if now == '14:40':
+        voice.play(discord.FFmpegPCMAudio('audio.wav'), after=lambda e: print('done', e))
          # 月曜日
         if weekday == 0:
             await client.get_channel(CHANNEL).send('<@&776685183939641375> 月曜日 4限 の開始時刻です。出席確認をしてください。')
@@ -112,6 +122,7 @@ async def loop():
         if weekday == 4:
             await client.get_channel(CHANNEL).send('<@&776685928583790623> 金曜日 4限 の開始時刻です。出席確認をしてください。')
     if now == '16:20':
+        voice.play(discord.FFmpegPCMAudio('audio.wav'), after=lambda e: print('done', e))
         # 月曜日
         if weekday == 0:
             await client.get_channel(CHANNEL).send('<@&776685208967577631> 月曜日 5限 の開始時刻です。出席確認をしてください。')
