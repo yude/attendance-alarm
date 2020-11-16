@@ -41,7 +41,8 @@ async def on_message(message):
         if weekday == 4:
             print("<@&776685877371863090> 金曜日 限 の開始時刻です。出席確認をしてください。")
             await client.get_channel(DEV_CHANNEL).send('<@&776685877371863090> 金曜日 限 の開始時刻です。出席確認をしてください。')
-
+    if message.content == '!stop':
+        voice.stop()
 @tasks.loop(seconds=60)
 async def loop():
     weekday = datetime.now().weekday()
