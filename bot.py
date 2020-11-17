@@ -17,10 +17,10 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    voice = await client.get_channel(ALARM_VOICE).connect()
+    # voice = await client.get_channel(ALARM_VOICE).connect()
     weekday = datetime.now().weekday()
     if message.content == '!debug':
-        voice.play(discord.FFmpegPCMAudio('audio.wav'), after=lambda e: print('done', e))
+        # voice.play(discord.FFmpegPCMAudio('audio.wav'), after=lambda e: print('done', e))
         # 月曜日
         if weekday == 0:
             print("<@&776685010110513152> 月曜日 限 の開始時刻です。出席確認をしてください。")
