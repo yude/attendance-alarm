@@ -11,8 +11,6 @@ TOKEN = os.getenv('TOKEN')
 DEV_CHANNEL = 777780662013919283
 ALARM_VOICE = 777780340864712734
 
-global voice
-
 # 起動通知
 @client.event
 async def on_ready():
@@ -24,6 +22,7 @@ async def on_message(message):
     if message.content == '!debug':
         if voice.is_connected() != True:
             voice = await client.get_channel(ALARM_VOICE).connect()
+
         voice.play(discord.FFmpegPCMAudio('audio.wav'), after=lambda e: print('done', e))
         # 月曜日
         if weekday == 0:
