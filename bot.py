@@ -19,6 +19,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     weekday = datetime.now().weekday()
+    global voice = None
     if message.content == '!debug':
         if voice.is_connected() != True:
             voice = await client.get_channel(ALARM_VOICE).connect()
