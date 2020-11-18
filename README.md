@@ -14,6 +14,10 @@ Discord ボット: 出席ボタンを押す通知を送信
     ```
     sudo apt install libffi-dev
     ```
+* libnacl-dev
+    ```
+    sudo apt install libnacl-dev
+    ```
 
 ## Repository structure
 * [bot.py](https://github.com/yudete/attendance-alarm/blob/main/bot.py)  
