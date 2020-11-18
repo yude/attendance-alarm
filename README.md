@@ -19,7 +19,20 @@ Discord ボット: 出席ボタンを押す通知を送信
     sudo apt install libnacl-dev
     ```
 
-#
+## 動かし方
+1. まず、環境変数 `TOKEN` にボットのトークンを追加します。
+    * Windows
+        ```
+        set TOKEN=GOES_HERE
+        ```
+    * Linux
+        ```
+        export TOKEN=GOES_HERE
+        ```
+    以上は**一時的に**環境変数を追加するものですが、必要にしたがってそれぞれのOSの手段で恒久的に環境変数を設定することもできます。
+1. 上記の「必要なもの」に従って、必須パッケージをインストールします。  
+1. `python bot.py` 等で実行します。
+
 ## このリポジトリの構造
 * [bot.py](https://github.com/yudete/attendance-alarm/blob/main/bot.py)  
 ボット本体のソースコード。
