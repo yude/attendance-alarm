@@ -4,7 +4,7 @@ Discord ボット: 出席ボタンを押す通知を送信
 ## Requirements
 * [discord.py](https://discordpy.readthedocs.io/ja/latest/) **including VOICE** for whole operating
     ```
-    pip install discord[voice]
+    pip install discord.py[voice]
     ```
 * [PyNaCl](https://pypi.org/project/PyNaCl/) for play audio file
     ```
