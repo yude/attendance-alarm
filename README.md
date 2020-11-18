@@ -1,12 +1,12 @@
 # [yudete](https://github.com/yudete) / attendance-alarm
 Discord ボット: 出席ボタンを押す通知を送信
 
-## Requirements
-* [discord.py](https://discordpy.readthedocs.io/ja/latest/) **including VOICE** for whole operating
+## 必要なもの
+* [discord.py](https://discordpy.readthedocs.io/ja/latest/) *voice モジュール込み。*
     ```
     pip install discord.py[voice]
     ```
-* [PyNaCl](https://pypi.org/project/PyNaCl/) for play audio file
+* [PyNaCl](https://pypi.org/project/PyNaCl/)
     ```
     pip install pynacl
     ```
@@ -19,15 +19,16 @@ Discord ボット: 出席ボタンを押す通知を送信
     sudo apt install libnacl-dev
     ```
 
-## Repository structure
+#
+## このリポジトリの構造
 * [bot.py](https://github.com/yudete/attendance-alarm/blob/main/bot.py)  
-Source code
+ボット本体のソースコード。
 * [attendance-alarm.service](https://github.com/yudete/attendance-alarm/blob/main/attendance-alarm.service)  
-Unit file (Systemd)
+Systemd 向けのユニットファイル。
 * [audio.wav](https://github.com/yudete/attendance-alarm/blob/main/audio.wav)  
-Audio file for alarm
+アラームに使われる音声ファイル。
 * [logo.png](https://github.com/yudete/attendance-alarm/blob/main/logo.png)  
-LOOK AT FILE NAME
+ファイル名を見なさい
 
 ## License
-This project is under the MIT License. EXCLUDING ASSETS
+このプロジェクトは画像や音声ファイルなどのアセットファイルなどを除き、[MIT License](https://opensource.org/licenses/MIT)に従ってライセンスされています。
