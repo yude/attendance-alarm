@@ -16,7 +16,7 @@ player = None
 @client.event
 async def on_ready():
     print("ボットを起動しました。discord.py バージョン", discord.__version__)
-    await client.change_presence(activity=discord.Game(name="起きろ起きろ起きろ起きろ起きろ起きろ起きろ起きろ起きろ　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　"))
+    await client.change_presence(activity=discord.Game(name="起きろ起きろ起きろ起きろ起きろ起きろ起きろ起きろ起きろ"))
 
 @client.event
 async def on_message(message):
