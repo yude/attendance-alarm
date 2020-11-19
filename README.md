@@ -1,5 +1,5 @@
 # [yudete](https://github.com/yudete) / attendance-alarm
-Discord ボット: 出席ボタンを押す通知を送信
+講義の開始時にメンションを飛ばし、アラームまで鳴らす Discord ボット
 
 ## 必要なもの
 * [discord.py](https://discordpy.readthedocs.io/ja/latest/) *voice モジュール込み。*
