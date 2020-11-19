@@ -47,10 +47,14 @@
 ボット本体のソースコード。
 * [attendance-alarm.service](https://github.com/yudete/attendance-alarm/blob/main/attendance-alarm.service)  
 Systemd 向けのユニットファイル。
-* [audio.wav](https://github.com/yudete/attendance-alarm/blob/main/audio.wav)  
-アラームに使われる音声ファイル。
-* [logo.png](https://github.com/yudete/attendance-alarm/blob/main/logo.png)  
-ファイル名を見なさい
+* [resource](https://github.com/yudete/attendance-alarm/blob/main/resource)  
+設定ファイルや音声ファイルを入れるディレクトリ
+    * [audio.wav](https://github.com/yudete/attendance-alarm/blob/main/resource/audio.wav)  
+    アラームに使われる音声ファイル。
+    * [logo.png](https://github.com/yudete/attendance-alarm/blob/main/resource/logo.png)  
+    ファイル名を見なさい
+    * [config.yml](https://github.com/yudete/attendance-alarm/blob/main/resource/config.yml)  
+    トークンやチャンネルIDを設定するためのファイル
 
 ## License
 このプロジェクトは画像や音声ファイルなどのアセットファイルなどを除き、[MIT License](https://opensource.org/licenses/MIT)に従ってライセンスされています。
