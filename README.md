@@ -3,18 +3,10 @@
 
 ## 必要なもの
 ### Python パッケージ
-* [discord.py](https://discordpy.readthedocs.io/ja/latest/) *voice モジュール込み。*
-    ```
-    pip install discord.py[voice]
-    ```
+`pip install -r requirements.txt` を使用してインストールします。
+* [discord.py[voice]](https://discordpy.readthedocs.io/ja/latest/)
 * [PyNaCl](https://pypi.org/project/PyNaCl/)
-    ```sss
-    pip install pynacl
-    ```
 * [PyYaml](https://pypi.org/project/PyYAML/)
-    ```
-    pip install pyyaml
-    ```
 ### Debian 系 OS で必要なパッケージ
 * libffi-dev
     ```
