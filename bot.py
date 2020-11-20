@@ -74,6 +74,7 @@ if DEV_DEBUG_MODE:
     print("> DEV_CHANNEL_VOICE: " + str(DEV_CHANNEL_VOICE))
 
 # グローバル変数の初期化
+global voice, player
 voice = None
 player = None
 
@@ -89,7 +90,8 @@ async def on_ready():
 @client.event
 async def on_message(message):
     weekday = datetime.now().weekday()
-    global voice, player
+    global voice, player, guild
+    guild = client.get_guild(GUILD_ID)
     if message.content == '!debug':
         # ボイスチャンネルに参加、音声を再生
         if voice is None:  # もし参加していなかったら？
@@ -103,7 +105,6 @@ async def on_message(message):
             for member in bot_vc.members:
                 await member.edit(deafen=True)
             # 特定のロールのみミュート解除する。
-            guild = client.get_guild(GUILD_ID)
             role_id = DEBUG_ROLE  # Debug role
             role = guild.get_role(role_id)
             for member in bot_vc.members:
@@ -135,7 +136,9 @@ async def on_message(message):
         await client.get_channel(DEV_CHANNEL_TEXT).send(STOPPED)
 
     if message.content == '!disconnect':
-        voice.disconnect()
+        await guild.voice_client.disconnect()
+        voice = None
+        player = None
         await client.get_channel(DEV_CHANNEL_TEXT).send(DISCONNECTED)
 
     if message.content == '!deafen on':  # テスト用: 全員をスピーカーミュートする。
