@@ -2,7 +2,6 @@
 
 # import
 import discord
-from discord.utils import get
 from discord.ext import tasks
 from datetime import datetime
 import os
@@ -13,6 +12,7 @@ AUDIO_PATH = os.getcwd() + os.path.sep + "resources" + os.path.sep + "audio.wav"
 
 # クライアントオブジェクトを生成
 client = discord.Client()
+
 # 設定ファイルの読み込み
 path = os.getcwd() + os.path.sep + "resources" + os.path.sep + "config.yml"
 with open(path, 'r', encoding="utf-8") as file:
@@ -24,8 +24,9 @@ with open(path, 'r', encoding="utf-8") as file:
     DEV_DEBUG_MODE = ymlobj['dev-debug-mode']
     DEV_CHANNEL_TEXT = ymlobj['dev-channel-text']
     DEV_CHANNEL_VOICE = ymlobj['dev-channel-text']  # not implemented
-    TEMPLATE = ymlobj['template'] # 通知メッセージのテンプレート
+    TEMPLATE = ymlobj['template']  # 通知メッセージのテンプレート
 
+# DEV_DEBUG_MODE が有効だった場合、ボットの起動時に config を表示する
 if DEV_DEBUG_MODE:
     print("> ボットの設定 ▼")
     print("> TOKEN: " + TOKEN)
@@ -35,6 +36,7 @@ if DEV_DEBUG_MODE:
     print("> DEV_CHANNEL_TEXT: " + str(DEV_CHANNEL_TEXT))
     print("> DEV_CHANNEL_VOICE: " + str(DEV_CHANNEL_VOICE))
 
+# グローバル変数の初期化
 voice = None
 player = None
 
@@ -42,8 +44,8 @@ player = None
 # 起動通知
 @client.event
 async def on_ready():
-    print("ボットを起動しました。discord.py バージョン", discord.__version__) # 起動確認メッセージ
-    await client.change_presence(activity=discord.Game(name="起きろ起きろ起きろ起きろ起きろ起きろ起きろ起きろ起きろ")) # 脅し
+    print("ボットを起動しました。discord.py バージョン", discord.__version__)  # 起動確認メッセージ
+    await client.change_presence(activity=discord.Game(name="起きろ起きろ起きろ起きろ起きろ起きろ起きろ起きろ起きろ"))  # 脅し
 
 
 @client.event
@@ -52,11 +54,11 @@ async def on_message(message):
     global voice, player
     if message.content == '!debug':
         # ボイスチャンネルに参加、音声を再生
-        if voice == None:  # もし参加していなかったら？
+        if voice is None:  # もし参加していなかったら？
             voice = await client.get_channel(CHANNEL_VOICE).connect(reconnect=True)
         else:
             print('Already connected to the VC.')
-        if player == None:  # もし何も再生されていなかったら？
+        if player is None:  # もし何も再生されていなかったら？
             # 全員に音声が流れるのを防ぐ
             # 一旦、全員をスピーカーミュートする。
             bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -103,9 +105,9 @@ async def on_message(message):
         voice.disconnect()
         await client.get_channel(DEV_CHANNEL_TEXT).send("ボイスチャンネルから切断しました。")
 
-    if message.content == '!deafen on': # テスト用: 全員をスピーカーミュートする。
+    if message.content == '!deafen on':  # テスト用: 全員をスピーカーミュートする。
         # ボイスチャンネルに参加
-        if voice == None:  # もし参加していなかったら？
+        if voice is None:  # もし参加していなかったら？
             voice = await client.get_channel(CHANNEL_VOICE).connect(reconnect=True)
         else:
             print('Already connected to the VC.')
@@ -113,9 +115,9 @@ async def on_message(message):
         for member in bot_vc.members:
             await member.edit(deafen=True)
 
-    if message.content == '!deafen off': # テスト用: 全員のスピーカーミュートを解除する。
+    if message.content == '!deafen off':  # テスト用: 全員のスピーカーミュートを解除する。
         # ボイスチャンネルに参加
-        if voice == None:  # もし参加していなかったら？
+        if voice is None:  # もし参加していなかったら？
             voice = await client.get_channel(CHANNEL_VOICE).connect(reconnect=True)
         else:
             print('Already connected to the VC.')
@@ -123,8 +125,9 @@ async def on_message(message):
         for member in bot_vc.members:
             await member.edit(deafen=False)
 
-    if message.content == '!template': # テスト用: テンプレートを表示する。
+    if message.content == '!template':  # テスト用: テンプレートを表示する。
         await client.get_channel(DEV_CHANNEL_TEXT).send(TEMPLATE)
+
 
 @tasks.loop(seconds=60)
 async def loop():
@@ -132,9 +135,14 @@ async def loop():
     weekday = datetime.now().weekday()
     now = datetime.now().strftime('%H:%M')
     if now == '09:00':
+        # ボイスチャンネルに参加
+        if voice is None:  # もし参加していなかったら？
+            voice = await client.get_channel(CHANNEL_VOICE).connect(reconnect=True)
+        else:
+            print('Already connected to the VC.')
         # 月曜日
         if weekday == 0:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -154,7 +162,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685010110513152> 月曜日 1限 の開始時刻です。出席確認をしてください。')
         # 火曜日
         if weekday == 1:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -174,7 +182,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685230748729344> 火曜日 1限 の開始時刻です。出席確認をしてください。')
         # 水曜日
         if weekday == 2:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -194,7 +202,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685706415177748> 水曜日 1限 の開始時刻です。出席確認をしてください。')
         # 木曜日
         if weekday == 3:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -214,7 +222,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685777597890570> 木曜日 1限 の開始時刻です。出席確認をしてください。')
         # 金曜日
         if weekday == 4:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -233,9 +241,14 @@ async def loop():
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685877371863090> 金曜日 1限 の開始時刻です。出席確認をしてください。')
     if now == '10:40':
+        # ボイスチャンネルに参加
+        if voice is None:  # もし参加していなかったら？
+            voice = await client.get_channel(CHANNEL_VOICE).connect(reconnect=True)
+        else:
+            print('Already connected to the VC.')
         # 月曜日
         if weekday == 0:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -255,7 +268,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685103203483657> 月曜日 2限 の開始時刻です。出席確認をしてください。')
         # 火曜日
         if weekday == 1:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -275,7 +288,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685270154084362> 火曜日 2限 の開始時刻です。出席確認をしてください。')
         # 水曜日
         if weekday == 2:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -295,7 +308,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685729551876126> 水曜日 2限 の開始時刻です。出席確認をしてください。')
         # 木曜日
         if weekday == 3:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -315,7 +328,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685834472652850> 木曜日 2限 の開始時刻です。出席確認をしてください。')
         # 金曜日
         if weekday == 4:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -334,9 +347,14 @@ async def loop():
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685909868412938> 金曜日 2限 の開始時刻です。出席確認をしてください。')
     if now == '13:00':
+        # ボイスチャンネルに参加
+        if voice is None:  # もし参加していなかったら？
+            voice = await client.get_channel(CHANNEL_VOICE).connect(reconnect=True)
+        else:
+            print('Already connected to the VC.')
         # 月曜日
         if weekday == 0:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -356,7 +374,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685163769626645> 月曜日 3限 の開始時刻です。出席確認をしてください。')
         # 火曜日
         if weekday == 1:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -376,7 +394,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685649473962059> 火曜日 3限 の開始時刻です。出席確認をしてください。')
         # 水曜日
         if weekday == 2:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -396,7 +414,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685741249527850> 水曜日 3限 の開始時刻です。出席確認をしてください。')
         # 木曜日
         if weekday == 3:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -416,7 +434,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685844853162005> 木曜日 3限 の開始時刻です。出席確認をしてください。')
         # 金曜日
         if weekday == 4:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -435,9 +453,14 @@ async def loop():
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685918543151175> 金曜日 3限 の開始時刻です。出席確認をしてください。')
     if now == '14:40':
+        # ボイスチャンネルに参加
+        if voice is None:  # もし参加していなかったら？
+            voice = await client.get_channel(CHANNEL_VOICE).connect(reconnect=True)
+        else:
+            print('Already connected to the VC.')
         # 月曜日
         if weekday == 0:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -457,7 +480,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685183939641375> 月曜日 4限 の開始時刻です。出席確認をしてください。')
         # 火曜日
         if weekday == 1:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -477,7 +500,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685653303754762> 火曜日 4限 の開始時刻です。出席確認をしてください。')
         # 水曜日
         if weekday == 2:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -497,7 +520,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685753106432012> 水曜日 4限 の開始時刻です。出席確認をしてください。')
         # 木曜日
         if weekday == 3:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -517,7 +540,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685854030037002> 木曜日 4限 の開始時刻です。出席確認をしてください。')
         # 金曜日
         if weekday == 4:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -536,9 +559,14 @@ async def loop():
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685928583790623> 金曜日 4限 の開始時刻です。出席確認をしてください。')
     if now == '16:20':
+        # ボイスチャンネルに参加
+        if voice is None:  # もし参加していなかったら？
+            voice = await client.get_channel(CHANNEL_VOICE).connect(reconnect=True)
+        else:
+            print('Already connected to the VC.')
         # 月曜日
         if weekday == 0:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -558,7 +586,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685208967577631> 月曜日 5限 の開始時刻です。出席確認をしてください。')
         # 火曜日
         if weekday == 1:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -578,7 +606,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685694272929837> 火曜日 5限 の開始時刻です。出席確認をしてください。')
         # 水曜日
         if weekday == 2:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -598,7 +626,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685765299404800> 水曜日 5限 の開始時刻です。出席確認をしてください。')
         # 木曜日
         if weekday == 3:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
@@ -618,7 +646,7 @@ async def loop():
             await client.get_channel(CHANNEL_TEXT).send('<@&776685863358300161> 木曜日 5限 の開始時刻です。出席確認をしてください。')
         # 金曜日
         if weekday == 4:
-            if player == None:  # もし何も再生されていなかったら？
+            if player is None:  # もし何も再生されていなかったら？
                 # 全員に音声が流れるのを防ぐ
                 # 一旦、全員をスピーカーミュートする。
                 bot_vc = client.get_channel(CHANNEL_VOICE)
