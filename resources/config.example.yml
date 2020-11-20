@@ -57,3 +57,6 @@ friday-2: 0
 friday-3: 0
 friday-4: 0
 friday-5: 0
+
+# デバッグ用
+debug-role: 0

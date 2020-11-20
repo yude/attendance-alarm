@@ -60,6 +60,8 @@ with open(path, 'r', encoding="utf-8") as file:
     FRIDAY_3 = ymlobj['friday-3']
     FRIDAY_4 = ymlobj['friday-4']
     FRIDAY_5 = ymlobj['friday-5']
+    # デバッグ用
+    DEBUG_ROLE = ymlobj['debug-role']
 
 # DEV_DEBUG_MODE が有効だった場合、ボットの起動時に config を表示する
 if DEV_DEBUG_MODE:
@@ -102,7 +104,7 @@ async def on_message(message):
                 await member.edit(deafen=True)
             # 特定のロールのみミュート解除する。
             guild = client.get_guild(GUILD_ID)
-            role_id = 778897396317814865  # Debug role
+            role_id = DEBUG_ROLE  # Debug role
             role = guild.get_role(role_id)
             for member in bot_vc.members:
                 if role in member.roles:
@@ -127,7 +129,7 @@ async def on_message(message):
         # 金曜日
         if weekday == 4:
             await client.get_channel(DEV_CHANNEL_TEXT).send(TEMPLATE.format(role=FRIDAY_1, weekday="金", time="TEST"))
-#template.format("", "", "TEST")
+
     if message.content == '!stop':
         voice.stop()
         await client.get_channel(DEV_CHANNEL_TEXT).send(STOPPED)
