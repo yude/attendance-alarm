@@ -52,6 +52,42 @@
     playing: "起きろ起きろ起きろ起きろ起きろ起きろ起きろ起きろ起きろ起きろ"
     stopped: "再生を停止しました。"
     disconnected: "ボイスチャンネルから切断しました。"
+
+    ## Role ID
+    # 月曜日
+    monday-1: 0
+    monday-2: 0
+    monday-3: 0
+    monday-4: 0
+    monday-5: 0
+
+    # 火曜日
+    tuesday-1: 0
+    tuesday-2: 0
+    tuesday-3: 0
+    tuesday-4: 0
+    tuesday-5: 0
+
+    # 水曜日
+    wedday-1: 0
+    wedday-2: 0
+    wedday-3: 0
+    wedday-4: 0
+    wedday-5: 0
+
+    # 木曜日
+    thursday-1: 0
+    thursday-2: 0
+    thursday-3: 0
+    thursday-4: 0
+    thursday-5: 0
+
+    # 金曜日
+    friday-1: 0
+    friday-2: 0
+    friday-3: 0
+    friday-4: 0
+    friday-5: 0
     ```
 1. 上記の「必要なもの」に従って、必須パッケージをインストールします。  
 1. `python bot.py` 等で実行します。
