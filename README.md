@@ -2,6 +2,7 @@
 講義の開始時にメンションを飛ばし、アラームまで鳴らす Discord ボット
 
 ## 必要なもの
+### Python パッケージ
 * [discord.py](https://discordpy.readthedocs.io/ja/latest/) *voice モジュール込み。*
     ```
     pip install discord.py[voice]
@@ -14,6 +15,7 @@
     ```
     pip install pyyaml
     ```
+### Debian 系 OS で必要なパッケージ
 * libffi-dev
     ```
     sudo apt install libffi-dev
