@@ -17,6 +17,7 @@ client = discord.Client()
 path = os.getcwd() + os.path.sep + "resources" + os.path.sep + "config.yml"
 with open(path, 'r', encoding="utf-8") as file:
     ymlobj = yaml.safe_load(file)
+    # 一般的な設定項目
     TOKEN = ymlobj['bot-token']
     GUILD_ID = ymlobj['server-id']
     CHANNEL_TEXT = ymlobj['server-channel-text']
@@ -28,6 +29,37 @@ with open(path, 'r', encoding="utf-8") as file:
     PLAYING = ymlobj['playing']
     STOPPED = ymlobj['stopped']
     DISCONNECTED = ymlobj['disconnected']
+    # ロールID
+    # 月曜日
+    MONDAY_1 = ymlobj['monday-1']
+    MONDAY_2 = ymlobj['monday-2']
+    MONDAY_3 = ymlobj['monday-3']
+    MONDAY_4 = ymlobj['monday-4']
+    MONDAY_5 = ymlobj['monday-5']
+    # 火曜日
+    TUESDAY_1 = ymlobj['tuesday-1']
+    TUESDAY_2 = ymlobj['tuesday-2']
+    TUESDAY_3 = ymlobj['tuesday-3']
+    TUESDAY_4 = ymlobj['tuesday-4']
+    TUESDAY_5 = ymlobj['tuesday-5']
+    # 水曜日
+    WEDNESDAY_1 = ymlobj['wednesday-1']
+    WEDNESDAY_2 = ymlobj['wednesday-2']
+    WEDNESDAY_3 = ymlobj['wednesday-3']
+    WEDNESDAY_4 = ymlobj['wednesday-4']
+    WEDNESDAY_5 = ymlobj['wednesday-5']
+    # 木曜日
+    THURSDAY_1 = ymlobj['thursday-1']
+    THURSDAY_2 = ymlobj['thursday-2']
+    THURSDAY_3 = ymlobj['thursday-3']
+    THURSDAY_4 = ymlobj['thursday-4']
+    THURSDAY_5 = ymlobj['thursday-5']
+    # 金曜日
+    FRIDAY_1 = ymlobj['friday-1']
+    FRIDAY_2 = ymlobj['friday-2']
+    FRIDAY_3 = ymlobj['friday-3']
+    FRIDAY_4 = ymlobj['friday-4']
+    FRIDAY_5 = ymlobj['friday-5']
 
 # DEV_DEBUG_MODE が有効だった場合、ボットの起動時に config を表示する
 if DEV_DEBUG_MODE:
@@ -82,19 +114,19 @@ async def on_message(message):
 
         # 月曜日
         if weekday == 0:
-            await client.get_channel(DEV_CHANNEL_TEXT).send(TEMPLATE.format(role="776685010110513152", weekday="月", time="TEST"))
+            await client.get_channel(DEV_CHANNEL_TEXT).send(TEMPLATE.format(role=MONDAY_1, weekday="月", time="TEST"))
         # 火曜日
         if weekday == 1:
-            await client.get_channel(DEV_CHANNEL_TEXT).send(TEMPLATE.format(role="776685230748729344", weekday="火", time="TEST"))
+            await client.get_channel(DEV_CHANNEL_TEXT).send(TEMPLATE.format(role=TUESDAY_1, weekday="火", time="TEST"))
         # 水曜日
         if weekday == 2:
-            await client.get_channel(DEV_CHANNEL_TEXT).send(TEMPLATE.format(role="776685706415177748", weekday="水", time="TEST"))
+            await client.get_channel(DEV_CHANNEL_TEXT).send(TEMPLATE.format(role=WEDNESDAY_1, weekday="水", time="TEST"))
         # 木曜日
         if weekday == 3:
-            await client.get_channel(DEV_CHANNEL_TEXT).send(TEMPLATE.format(role="776685777597890570", weekday="木", time="TEST"))
+            await client.get_channel(DEV_CHANNEL_TEXT).send(TEMPLATE.format(role=THURSDAY_1, weekday="木", time="TEST"))
         # 金曜日
         if weekday == 4:
-            await client.get_channel(DEV_CHANNEL_TEXT).send(TEMPLATE.format(role="776685877371863090", weekday="金", time="TEST"))
+            await client.get_channel(DEV_CHANNEL_TEXT).send(TEMPLATE.format(role=FRIDAY_1, weekday="金", time="TEST"))
 #template.format("", "", "TEST")
     if message.content == '!stop':
         voice.stop()
@@ -158,7 +190,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685010110513152", weekday="月", time="1"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=MONDAY_1, weekday="月", time="1"))
         # 火曜日
         if weekday == 1:
             if player is None:  # もし何も再生されていなかったら？
@@ -178,7 +210,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685010110513152", weekday="火", time="1"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=TUESDAY_1, weekday="火", time="1"))
         # 水曜日
         if weekday == 2:
             if player is None:  # もし何も再生されていなかったら？
@@ -198,7 +230,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685010110513152", weekday="水", time="1"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=WEDNESDAY_1, weekday="水", time="1"))
         # 木曜日
         if weekday == 3:
             if player is None:  # もし何も再生されていなかったら？
@@ -218,7 +250,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685010110513152", weekday="木", time="1"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=THURSDAY_1, weekday="木", time="1"))
         # 金曜日
         if weekday == 4:
             if player is None:  # もし何も再生されていなかったら？
@@ -238,7 +270,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685010110513152", weekday="金", time="1"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=FRIDAY_1, weekday="金", time="1"))
     if now == '10:40':
         # ボイスチャンネルに参加
         if voice is None:  # もし参加していなかったら？
@@ -264,7 +296,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685103203483657", weekday="月", time="2"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=MONDAY_2, weekday="月", time="2"))
         # 火曜日
         if weekday == 1:
             if player is None:  # もし何も再生されていなかったら？
@@ -284,7 +316,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685270154084362", weekday="火", time="2"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=TUESDAY_2, weekday="火", time="2"))
         # 水曜日
         if weekday == 2:
             if player is None:  # もし何も再生されていなかったら？
@@ -304,7 +336,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685729551876126", weekday="水", time="2"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=WEDNESDAY_2, weekday="水", time="2"))
         # 木曜日
         if weekday == 3:
             if player is None:  # もし何も再生されていなかったら？
@@ -324,7 +356,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685834472652850", weekday="木", time="2"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=THURSDAY_2, weekday="木", time="2"))
         # 金曜日
         if weekday == 4:
             if player is None:  # もし何も再生されていなかったら？
@@ -344,7 +376,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685909868412938", weekday="金", time="2"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=FRIDAY_2, weekday="金", time="2"))
     if now == '13:00':
         # ボイスチャンネルに参加
         if voice is None:  # もし参加していなかったら？
@@ -370,7 +402,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685163769626645", weekday="月", time="3"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=MONDAY_3, weekday="月", time="3"))
         # 火曜日
         if weekday == 1:
             if player is None:  # もし何も再生されていなかったら？
@@ -390,7 +422,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685649473962059", weekday="火", time="3"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=TUESDAY_3, weekday="火", time="3"))
         # 水曜日
         if weekday == 2:
             if player is None:  # もし何も再生されていなかったら？
@@ -410,7 +442,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685741249527850", weekday="水", time="3"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=WEDNESDAY_3, weekday="水", time="3"))
         # 木曜日
         if weekday == 3:
             if player is None:  # もし何も再生されていなかったら？
@@ -430,7 +462,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685844853162005", weekday="木", time="3"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=THURSDAY_3, weekday="木", time="3"))
         # 金曜日
         if weekday == 4:
             if player is None:  # もし何も再生されていなかったら？
@@ -450,7 +482,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685918543151175", weekday="金", time="3"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=FRIDAY_3, weekday="金", time="3"))
     if now == '14:40':
         # ボイスチャンネルに参加
         if voice is None:  # もし参加していなかったら？
@@ -476,7 +508,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685183939641375", weekday="月", time="4"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=MONDAY_4, weekday="月", time="4"))
         # 火曜日
         if weekday == 1:
             if player is None:  # もし何も再生されていなかったら？
@@ -496,7 +528,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685653303754762", weekday="火", time="4"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=TUESDAY_4, weekday="火", time="4"))
         # 水曜日
         if weekday == 2:
             if player is None:  # もし何も再生されていなかったら？
@@ -516,7 +548,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685753106432012", weekday="水", time="4"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=WEDNESDAY_4, weekday="水", time="4"))
         # 木曜日
         if weekday == 3:
             if player is None:  # もし何も再生されていなかったら？
@@ -536,7 +568,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685854030037002", weekday="木", time="4"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=THURSDAY_4, weekday="木", time="4"))
         # 金曜日
         if weekday == 4:
             if player is None:  # もし何も再生されていなかったら？
@@ -556,7 +588,7 @@ async def loop():
                 player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685928583790623", weekday="金", time="4"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=FRIDAY_4, weekday="金", time="4"))
     if now == '16:20':
         # ボイスチャンネルに参加
         if voice is None:  # もし参加していなかったら？
@@ -583,7 +615,7 @@ async def loop():
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&> 曜日 5限 の開始時刻です。出席確認をしてください。')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685208967577631", weekday="月", time="5"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=MONDAY_5, weekday="月", time="5"))
         # 火曜日
         if weekday == 1:
             if player is None:  # もし何も再生されていなかったら？
@@ -604,7 +636,7 @@ async def loop():
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&> 曜日 5限 の開始時刻です。出席確認をしてください。')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685694272929837", weekday="火", time="5"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=TUESDAY_5, weekday="火", time="5"))
         # 水曜日
         if weekday == 2:
             if player is None:  # もし何も再生されていなかったら？
@@ -625,7 +657,7 @@ async def loop():
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&> 曜日 5限 の開始時刻です。出席確認をしてください。')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685765299404800", weekday="水", time="5"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=WEDNESDAY_5, weekday="水", time="5"))
         # 木曜日
         if weekday == 3:
             if player is None:  # もし何も再生されていなかったら？
@@ -646,7 +678,7 @@ async def loop():
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&> 曜日 5限 の開始時刻です。出席確認をしてください。')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685863358300161", weekday="木", time="5"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=THURSDAY_5, weekday="木", time="5"))
         # 金曜日
         if weekday == 4:
             if player is None:  # もし何も再生されていなかったら？
@@ -667,7 +699,7 @@ async def loop():
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&> 曜日 5限 の開始時刻です。出席確認をしてください。')
-            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role="776685937312137236", weekday="金", time="5"))
+            await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=FRIDAY_5, weekday="金", time="5"))
 
 
 # ループ開始
