@@ -17,5 +17,7 @@ dev-channel-voice: 0 #Dev-Alarm-Channel(Text)-ID
 # {time}: 時限
 template: "<@&{role}> {weekday}曜日 {time}限 の開始時刻です。出席確認をしてください。"
 
-# Playing
+# Messages
 playing: "起きろ起きろ起きろ起きろ起きろ起きろ起きろ起きろ起きろ起きろ"
+stopped: "再生を停止しました。"
+disconnected: "ボイスチャンネルから切断しました。"

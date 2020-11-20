@@ -26,6 +26,8 @@ with open(path, 'r', encoding="utf-8") as file:
     DEV_CHANNEL_VOICE = ymlobj['dev-channel-text']  # not implemented
     TEMPLATE = ymlobj['template']  # 通知メッセージのテンプレート
     PLAYING = ymlobj['playing']
+    STOPPED = ymlobj['stopped']
+    DISCONNECTED = ymlobj['disconnected']
 
 # DEV_DEBUG_MODE が有効だった場合、ボットの起動時に config を表示する
 if DEV_DEBUG_MODE:
@@ -96,11 +98,11 @@ async def on_message(message):
 #template.format("", "", "TEST")
     if message.content == '!stop':
         voice.stop()
-        await client.get_channel(DEV_CHANNEL_TEXT).send("再生を停止しました。")
+        await client.get_channel(DEV_CHANNEL_TEXT).send(STOPPED)
 
     if message.content == '!disconnect':
         voice.disconnect()
-        await client.get_channel(DEV_CHANNEL_TEXT).send("ボイスチャンネルから切断しました。")
+        await client.get_channel(DEV_CHANNEL_TEXT).send(DISCONNECTED)
 
     if message.content == '!deafen on':  # テスト用: 全員をスピーカーミュートする。
         # ボイスチャンネルに参加
