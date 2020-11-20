@@ -148,7 +148,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685010110513152> 月曜日 1限 の開始時刻です。出席確認をしてください。')
@@ -168,7 +168,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685230748729344> 火曜日 1限 の開始時刻です。出席確認をしてください。')
@@ -188,7 +188,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685706415177748> 水曜日 1限 の開始時刻です。出席確認をしてください。')
@@ -208,7 +208,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685777597890570> 木曜日 1限 の開始時刻です。出席確認をしてください。')
@@ -228,7 +228,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685877371863090> 金曜日 1限 の開始時刻です。出席確認をしてください。')
@@ -249,7 +249,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685103203483657> 月曜日 2限 の開始時刻です。出席確認をしてください。')
@@ -269,7 +269,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685270154084362> 火曜日 2限 の開始時刻です。出席確認をしてください。')
@@ -289,7 +289,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685729551876126> 水曜日 2限 の開始時刻です。出席確認をしてください。')
@@ -309,7 +309,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685834472652850> 木曜日 2限 の開始時刻です。出席確認をしてください。')
@@ -329,7 +329,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685909868412938> 金曜日 2限 の開始時刻です。出席確認をしてください。')
@@ -350,7 +350,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685163769626645> 月曜日 3限 の開始時刻です。出席確認をしてください。')
@@ -370,7 +370,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685649473962059> 火曜日 3限 の開始時刻です。出席確認をしてください。')
@@ -390,7 +390,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685741249527850> 水曜日 3限 の開始時刻です。出席確認をしてください。')
@@ -410,7 +410,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685844853162005> 木曜日 3限 の開始時刻です。出席確認をしてください。')
@@ -430,7 +430,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685918543151175> 金曜日 3限 の開始時刻です。出席確認をしてください。')
@@ -451,7 +451,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685183939641375> 月曜日 4限 の開始時刻です。出席確認をしてください。')
@@ -471,7 +471,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685653303754762> 火曜日 4限 の開始時刻です。出席確認をしてください。')
@@ -491,7 +491,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685753106432012> 水曜日 4限 の開始時刻です。出席確認をしてください。')
@@ -511,7 +511,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685854030037002> 木曜日 4限 の開始時刻です。出席確認をしてください。')
@@ -531,7 +531,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685928583790623> 金曜日 4限 の開始時刻です。出席確認をしてください。')
@@ -552,7 +552,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685208967577631> 月曜日 5限 の開始時刻です。出席確認をしてください。')
@@ -572,7 +572,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685694272929837> 火曜日 5限 の開始時刻です。出席確認をしてください。')
@@ -592,7 +592,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685765299404800> 水曜日 5限 の開始時刻です。出席確認をしてください。')
@@ -612,7 +612,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685863358300161> 木曜日 5限 の開始時刻です。出席確認をしてください。')
@@ -632,7 +632,7 @@ async def loop():
                     if role in member.roles:
                         await member.edit(deafen=False)
                 # 音声を再生する。
-                player = voice.play(discord.FFmpegPCMAudio('resources/audio.wav'))
+                player = voice.play(discord.FFmpegPCMAudio(AUDIO_PATH))
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send('<@&776685937312137236> 金曜日 5限 の開始時刻です。出席確認をしてください。')
