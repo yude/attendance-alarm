@@ -170,7 +170,7 @@ async def loop():
     global voice, player
     weekday = datetime.now().weekday()
     now = datetime.now().strftime('%H:%M')
-    if now == '09:00':
+    if now == '08:55':
         # ボイスチャンネルに参加
         if voice is None:  # もし参加していなかったら？
             voice = await client.get_channel(CHANNEL_VOICE).connect(reconnect=True)
@@ -276,7 +276,7 @@ async def loop():
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=FRIDAY_1, weekday="金", time="1"))
-    if now == '10:40':
+    if now == '10:35':
         # ボイスチャンネルに参加
         if voice is None:  # もし参加していなかったら？
             voice = await client.get_channel(CHANNEL_VOICE).connect(reconnect=True)
@@ -382,7 +382,7 @@ async def loop():
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=FRIDAY_2, weekday="金", time="2"))
-    if now == '13:00':
+    if now == '13:05':
         # ボイスチャンネルに参加
         if voice is None:  # もし参加していなかったら？
             voice = await client.get_channel(CHANNEL_VOICE).connect(reconnect=True)
@@ -488,7 +488,7 @@ async def loop():
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=FRIDAY_3, weekday="金", time="3"))
-    if now == '14:40':
+    if now == '14:45':
         # ボイスチャンネルに参加
         if voice is None:  # もし参加していなかったら？
             voice = await client.get_channel(CHANNEL_VOICE).connect(reconnect=True)
@@ -594,7 +594,7 @@ async def loop():
             else:
                 print('Already playing on VC.')
             await client.get_channel(CHANNEL_TEXT).send(TEMPLATE.format(role=FRIDAY_4, weekday="金", time="4"))
-    if now == '16:20':
+    if now == '16:25':
         # ボイスチャンネルに参加
         if voice is None:  # もし参加していなかったら？
             voice = await client.get_channel(CHANNEL_VOICE).connect(reconnect=True)
