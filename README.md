@@ -1,5 +1,6 @@
-# [yudete](https://github.com/yudete) / attendance-alarm
-講義の開始時にメンションを飛ばし、アラームまで鳴らす Discord ボット
+# attendance-alarm
+🔔 Notify when class starts by mentioning and playing some music.\
+🔔 講義の開始時にメンションを飛ばし、アラームまで鳴らす Discord ボット
 
 ## 必要なもの
 ### Python パッケージ
