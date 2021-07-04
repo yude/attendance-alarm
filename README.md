@@ -13,7 +13,7 @@
 
 ## セットアップ
 ### Docker を使う方法 (Docker Compose)
-1. `app/resource/config.example.yml` と `docker-compose.yml` をダウンロードし、同じディレクトリに配置します。作業ディレクトリ内は以下のようになるはずです。
+1. `app/resources/config.example.yml` と `docker-compose.yml` をダウンロードし、同じディレクトリに配置します。作業ディレクトリ内は以下のようになるはずです。
 ```
 $ exa --tree ./
 .
@@ -25,7 +25,7 @@ Botのトークンや使用するチャンネルのID等を記述してくださ
 1. `docker-compose.yml` が配置されているディレクトリ内で、`docker-compose up -d` を実行します。
 
 ### Docker を使わない方法
-1. まず、`app/resource/config.example.yml` を `app/resources/config.yml` にコピーし、これを編集します。\
+1. まず、`app/resources/config.example.yml` を `app/resources/config.yml` にコピーし、これを編集します。\
 Botのトークンや使用するチャンネルのID等を記述してください。
 1. 上記の「必要なもの」に従って、必須パッケージをインストールします。  
 1. `python bot.py` 等で実行します。
