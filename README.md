@@ -8,6 +8,7 @@
 * [discord.py[voice]](https://discordpy.readthedocs.io/ja/latest/)
 * [PyNaCl](https://pypi.org/project/PyNaCl/)
 * [PyYaml](https://pypi.org/project/PyYAML/)
+* [libnacl](https://pypi.org/project/libnacl/)
 ### OS パッケージ
 * libffi-dev
 
